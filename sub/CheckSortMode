@@ -1,0 +1,29 @@
+sub CheckSortMode(switchme)
+	local DoThis$, key$
+	GUIonoff(0)
+	if switchme = 1 then
+		if SortDirection$ = "az" then
+			SortDirection$ = "za"
+		else
+			SortDirection$ = "az"
+		endif
+	endif
+	if SortMode$ = "number" then
+		if SortDirection$ = "az" key$ = "1"
+		if SortDirection$ = "za" key$ = "1 -r"
+	elseif SortMode$ = "urgency" then
+		if SortDirection$ = "az" key$ = "2 -r"
+		if SortDirection$ = "za" key$ = "2"
+	elseif SortMode$ = "todo" then
+		if SortDirection$ = "az" key$ = "3"
+		if SortDirection$ = "za" key$ = "3 -r"
+	endif
+	DoThis$= "vstm-noansi > " + TempFile1$
+	system(DoThis$)
+	DoThis$= "sort --key=" + key$ + " " + TempFile1$ + " > " + TempFile2$
+	system(DoThis$)
+	Refresh(TempFile2$)
+	GUIonoff(1)
+	columnbox select "TheData", 1
+end sub
+

@@ -1,0 +1,32 @@
+sub OpenWindow()
+	local StartX,StartY,EndX, EndY, Xwidth,Yheight
+	if (not open(1,"/boot/home/config/settings/vstm.cfg")) then	
+		StartX = 79
+		StartY = 87
+	else
+		Line input #1 StartX
+		Line input #1 StartY
+	endif
+	close #1
+	Xwidth = 500
+	Yheight = 400
+	EndX = StartX + Xwidth
+	EndY = StartY + Yheight 
+	//Setup the main window here
+	window open StartX,StartY to EndX,EndY, "MainWindow", "vstm-GUI"
+	Window set "MainWindow", "flags", "Not-V-resizable"
+	Window set "MainWindow", "minimumto", Xwidth, Yheight
+	MakeMenu()
+	MakeButtonBar(Xwidth)
+	columnbox 1,45 to Xwidth,Yheight, "TheData", 1, "Resizable", "MainWindow"
+	columnbox column "TheData", "#", 1,60,40, 50, "align-center" 
+	columnbox column "TheData", "Urgency", 2,85,50, 70, "align-center" 
+	columnbox column "TheData", "   Description", 3,9999,200, 362, "align-left" 
+	columnbox color "TheData", "text", 50,50,50
+	columnbox color "TheData", "selection-text", 255,0,0
+	columnbox color "TheData", "non-focus-selection", 0,0,0
+	CheckSortMode()
+	GUIonoff(1)
+	//listbox 
+end sub
+

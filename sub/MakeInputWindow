@@ -1,0 +1,28 @@
+sub MakeInputWindow(urgency$, todotext$,newentry)
+	local Xwidth, Yheight, MWx, MWy
+	GUIonoff(0)
+	Xwidth = (window get "MainWindow", "width")
+	Yheight = (window get "MainWindow", "heigth")
+	MWx = (window get "MainWindow", "position-x") + 50
+	MWy = (window get "MainWindow", "position-y") + 100
+	window open MWx, MWy to MWx + Xwidth -100, MWy + 100, "InputWindow", ""
+	Window set "InputWindow", "look", "modal"
+	Window set "InputWindow", "feel", "modal-app"
+	//Window set "InputWindow", "flags", "Not-Resizable"
+	//switch size variables to new window
+	Xwidth = (window get "InputWindow", "width")
+	Yheight = (window get "InputWindow", "height")
+	Textcontrol 10,10 to Xwidth -10, 35, "TODONewText", "Todo:", todotext$, "InputWindow"
+	text 10,43, "sometext","Urgency:", "InputWindow"
+	slider 65,40 to Xwidth -10, 65, "UrgencySlider", "", 0,100, "block, horizontal", "InputWindow"
+	slider label "UrgencySlider", "0", "100"
+	slider set "UrgencySlider", "both",11
+	if val(urgency$)>100 urgency$ = "100"
+	if val(urgency$)<0 urgency$ = "0"
+	if urgency$ = "" urgency$ = "50"
+	slider set "UrgencySlider", val(urgency$)
+	if newentry button Xwidth/2-105, Yheight-27 to Xwidth/2-5, Yheight-5, "NewOKButton", "OK", "InputWindow"
+	if (not newentry) button Xwidth/2-105, Yheight-27 to Xwidth/2-5, Yheight-5, "EditOKButton", "OK", "InputWindow"
+	button Xwidth/2+5, Yheight-27 to Xwidth/2+105, Yheight-5, "InputCancelButton", "Cancel", "InputWindow"
+end sub
+

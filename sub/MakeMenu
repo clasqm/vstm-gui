@@ -1,0 +1,16 @@
+sub MakeMenu()
+	//Create menu in MainWindow
+	menu "File", "Edit vstm DB directly", "", "MainWindow"
+	menu "File", "Quit", "Q", "MainWindow"
+	menu "vstm", "New TODO", "N", "MainWindow"
+	menu "vstm", "Delete TODO", "D", "MainWindow"
+	menu "vstm", "Edit TODO", "E", "MainWindow"
+	submenu "vstm", "Sort by ...", "Entry number", "N", "MainWindow"
+	submenu "vstm", "Sort by ...", "Urgency", "U", "MainWindow"
+	submenu "vstm", "Sort by ...", "Description", "D", "MainWindow"
+	menu "vstm", "View TODOs in Terminal", "V", "MainWindow"
+	menu "Help", "About", "", "MainWindow"
+	submenu set "vstm", "Sort by ...", 1, "MainWindow"
+	submenu set "vstm", "Sort by ...", "Entry number", "mark", "MainWindow"
+end sub
+

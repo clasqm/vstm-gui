@@ -1,0 +1,24 @@
+.\" Manpage for vstm.
+.TH vstm 1 2012-12-12 "1.0" "vstm man page"
+.SH NAME
+.B vstm
+\- Very Simple Todo Manager 
+.SH SYNOPSIS
+.B vstm
+[[IDs to delete]|[[@PRIO] todo to add]]
+.SH DESCRIPTION
+.B vstm, as it says, is a todo keeper/manager. You can simply add or delete a todo. To list the actual TODOs, you just have to call the program with no args.
+You can either use your global DB file (localted at ~/.vstmDB) or the one in your current directory. In that case, if you want to create it, simply touch(1) ./.vstmDB
+.SH OPTIONS
+To list tasks: vstm
+.TP
+To delete task n: vstm n
+.TP
+To add a task: vstm [@PRIO] your task to do
+.TP
+Prio can either be a number, H or L
+
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Frank Villaro-Dixon (vstm@vi-di.fr)

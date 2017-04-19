@@ -1,0 +1,22 @@
+sub Refresh(FileName$)
+	local DoThis$, lines$, lines, tokens, w$(1), x$(1)
+	DoThis$ = "wc -l " + FileName$
+	lines$ = system$(DoThis$)
+	tokens = token(lines$, w$())
+	lines = val(w$(1))
+	//Columnbox clear "TheData"
+	open FileName$ for reading as #1
+	for f = 1 to lines
+		line input #1 lines$ //reusing a variable here 
+		tokens = token(lines$, x$())
+		columnbox add "TheData", 1, f,22, x$(1)
+		columnbox add "TheData", 2, f,22, x$(2)
+		lines$ = ""
+		for n = 3 to tokens
+			lines$ = lines$ + x$(n) + " "
+		next n
+		columnbox add "TheData", 3, f, 22, lines$
+	next f
+	close #1
+end sub
+

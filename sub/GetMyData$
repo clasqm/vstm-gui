@@ -1,0 +1,6 @@
+sub GetMyData$(kolom, ry)
+	local MyData$
+	MyData$ = ColumnBox get$ "TheData", kolom, ry
+	return MyData$
+end sub
+

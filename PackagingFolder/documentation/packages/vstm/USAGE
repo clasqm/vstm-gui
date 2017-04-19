@@ -1,0 +1,91 @@
+$ vstm
+Here's your TODO list:
+No tasks
+
+$ vstm Here is a new task I have to do
+	Task added
+
+$ vstm
+Here's your TODO list:
+0 0 Here is a new task I have to do
+
+$ vstm @H an high priority task
+
+$ vstm @L a low priority task
+
+$ vstm @90 a medium-high priority task
+
+$ vstm 
+Here's your TODO list:
+2 L a low priority task
+0 0 Here is a new task I have to do
+3 90 a medium-high priority task
+1 H an high priority task
+
+$ vstm 0
+	We finished our task
+
+$ vstm
+Here's your TODO list:
+1 L a low priority task
+2 90 a medium-high priority task
+0 H an high priority task
+
+$ vstm 2 0
+	We finished all of the high tasks
+
+$ vstm
+Here's your TODO list:
+0 L a low priority task
+
+$ vstm 0
+	And finally, we finished the low task
+
+$ vstm
+Here's your TODO list:
+No tasks
+
+
+If you are coding a project, you can have a local vstm DB file:
+For example:
+
+my_project$ vstm
+Here's your TODO list:
+0 L My task 1
+1 L Another task
+2 0 Finish VSTM USAGE file !
+
+my_project$ touch .vstmDB
+
+my_project$ vstm
+$ ./vstm 
+(Using local file)
+Here's your TODO list:
+No tasks
+
+
+That's it ;)
+
+***ATTENTION: TASKs IDs ARE NOT CONSERVED WHEN YOU DELETE A TASK !!!!***
+For example: 
+
+$ vstm Task 1
+(Using local file)
+$ vstm Task 2
+(Using local file)
+$ vstm Task 3
+(Using local file)
+$ vstm
+(Using local file)
+Here's your TODO list:
+0 0 Task 1
+1 0 Task 2
+2 0 Task 3
+
+$ vstm 0
+(Using local file)
+$ vstm
+(Using local file)
+Here's your TODO list:
+0 0 Task 2
+1 0 Task 3

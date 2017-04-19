@@ -1,0 +1,7 @@
+sub EditItem()
+	local urgency$, todotext$
+	urgency$ = GetMyData$(2, columnbox get "TheData")
+	todotext$ = GetMyData$(3, columnbox get "TheData")
+	MakeInputWindow(urgency$, todotext$,0)
+end sub
+

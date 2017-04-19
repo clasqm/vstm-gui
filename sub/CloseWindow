@@ -1,0 +1,9 @@
+sub CloseWindow()
+	//Close down the main window
+		open "/boot/home/config/settings/vstm.cfg" for writing as #1
+	print #1 window get "MainWindow", "position-x" 
+	print #1 window get "MainWindow", "position-y" 
+	close #1
+	window close "MainWindow"
+end sub
+

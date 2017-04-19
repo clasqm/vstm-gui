@@ -1,0 +1,90 @@
+
+//Yabadabbadoo notification
+########DO NOT RENAME THIS FILE!########
+//Yabadabbadoo needs it to function.
+
+//Main Message Loop
+dim msg$(1)
+while(not leavingLoop)
+	nCommands = token(message$, msg$(), "|")
+	for everyCommand = 1 to nCommands
+		if(DEBUG and msg$(everyCommand)<>"") print msg$(everyCommand)
+		switch(msg$(everyCommand))
+			case "_QuitRequested":
+			case "MainWindow:_QuitRequested":
+			case "MainWindow:File:Quit":
+				leavingLoop = true
+				break
+			case "MainWindow:File:Edit vstm DB directly"
+				GUIonoff(0)
+				system("/boot/system/apps/StyledEdit /boot/home/.vstmDB")
+				columnbox clear "TheData"
+				CheckSortMode(0)
+				GUIonoff(1)
+				break
+			case "MainWindow:vstm:New TODO"
+			case "NewButton"
+				MakeInputWindow("","",1)
+				break
+			case "MainWindow:vstm:Delete TODO"
+			case "DeleteButton"
+				GUIonoff(0)
+				if left$(system$("alert \"Really delete this TODO?\" Yes No"),1) = "Y" then
+					system("vstm " + GetMyData$(1, columnbox get "TheData"))
+					columnbox remove "TheData", columnbox count "TheData"
+					CheckSortMode(0)
+				endif
+				GUIonoff(1)
+				break
+			case "MainWindow:vstm:Sort by ...:Urgency"
+			case "SortByUrgencyButton"
+				SortMode$ = "urgency"
+				CheckSortMode(1)
+				break
+			case "MainWindow:vstm:Sort by ...:Entry order"
+			case "SortByNumberButton"
+				SortMode$ = "number"
+				CheckSortMode(1)
+				break
+			case "MainWindow:vstm:Sort by ...:Description"
+			case "SortByDescriptionButton"
+				SortMode$ = "todo"
+				CheckSortMode(1)
+				break
+			case "MainWindow:vstm:Edit TODO"
+			case "EditButton"
+				EditItem()
+				break
+			case "MainWindow:vstm:View TODOs in Terminal"
+				wait 0.5
+				system("Terminal vstm &")
+				break
+			case "NewOKButton"
+				system("vstm " + FetchNewData$())
+				CheckSortMode(0)
+				window close "InputWindow"
+				GUIonoff(1)
+				break
+			case "EditOKButton"
+				system("vstm " + GetMyData$(1, columnbox get "TheData"))
+				system("vstm " + FetchNewData$())
+				CheckSortMode(0)
+				window close "InputWindow"
+				GUIonoff(1)
+				break
+			case "MainWindow:Help:About":
+				Alert ProgramName$ + " " + ProgramVersion$ + "\n" + AuthorName$ +"\n\n" + ProgramBriefDescription$ + "\n" + ProgramLicense$ + "\n" + ProgramAcknowledgements$, "OK", "none"
+			case "InputCancelButton"
+				window close "InputWindow"
+				GUIonoff(1)
+				break
+			default:
+				break
+		end switch
+	next everyCommand
+wend
+
+CloseWindow()
+
+end
+

@@ -1,0 +1,18 @@
+sub MakeButtonBar(Xwidth)
+	Xwidth = Xwidth -2
+	layout "left", "MainWindow"
+	button 2,20 to 50, 42, "SortByNumberButton", "↓#↑", "MainWindow"
+	button 52,20 to 120, 42, "SortByUrgencyButton", "↓ !!! ↑", "MainWindow"
+	button 122,20 to 220, 42, "SortByDescriptionButton", "↓ a-z ↑", "MainWindow"
+	button Xwidth - 100,20 to Xwidth-68,42, "EditButton", "⬊", "MainWindow"
+	button Xwidth - 66,20 to Xwidth-34,42, "DeleteButton", "✖", "MainWindow"
+	button Xwidth - 32,20 to Xwidth,42, "NewButton", "✚", "MainWindow"
+	tooltip "SortByUrgencyButton", "Sort by urgency. Click\nagain to toggle sort order."
+	tooltip "SortByNumberButton", "Sort by entry order. Click\nagain to toggle sort order."
+	tooltip "SortByDescriptionButton", "Sort by TODO Text. Click\nagain to toggle sort order."
+	tooltip "EditButton", "Edit this TODO"
+	tooltip "DeleteButton", "Delete this TODO"
+	tooltip "NewButton", "Add a new TODO"
+	layout "standard", "MainWindow"
+end sub
+

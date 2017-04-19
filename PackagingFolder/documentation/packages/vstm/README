@@ -1,0 +1,23 @@
+vstm - Very Simple Todo Manager
+Frank Villaro-Dixon - 2012
+
+vstm is a simple todo manager who keeps your TODO things
+
+To add a todo:
+$ vstm [@priority] message
+
+priority sets the task priority. It can be either a number, H (for high) or L.
+Each TODO task is assigned a non static ID number.
+
+To see the actual TODOs:
+$ vstm
+
+To delete a TODO:
+$ vstm ID [ID2] [ID3]
+
+As default, vstm uses the user DB file, located at: ~/.vstmDB. However, 
+if you wish to use your own in a specific folder, simply touch(1)
+./.vstmDB and it will use it, when in such folder.
+
+Also, don't forget to take a look at src/vstm.h . There's a "whole" lot
+of options available if you want to fiddle the program a bit.

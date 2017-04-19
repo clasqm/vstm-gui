@@ -1,0 +1,8 @@
+sub FetchNewData$()
+	local totalstring$
+	totalstring$ = "@" + str$(slider get "UrgencySlider")
+	totalstring$ = totalstring$  + " " 
+	totalstring$ = totalstring$  + TextControl get$ "TODONewText"
+	return totalstring$
+end sub
+

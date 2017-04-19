@@ -1,0 +1,22 @@
+sub GUIonoff(gui)
+	local gui$
+	if gui = 1 gui$ = "enable"
+	if gui = 0 gui$ = "disable"
+	menu set "File", "Edit vstm DB directly", gui$, "MainWindow"
+	menu set "File", "Quit", gui$, "MainWindow"
+	menu set "vstm", "New TODO", gui$, "MainWindow"
+	menu set "vstm", "Delete TODO", gui$, "MainWindow"
+	menu set "vstm", "Edit TODO", gui$, "MainWindow"
+	submenu set "vstm", "Sort by ...", "Entry number", gui$, "MainWindow"
+	submenu set "vstm", "Sort by ...", "Urgency", gui$, "MainWindow"
+	submenu set "vstm", "Sort by ...", "Description", gui$, "MainWindow"
+	menu set "vstm", "View TODOs in Terminal", gui$, "MainWindow"
+	menu set "Help", "About", gui$, "MainWindow"
+	option set "SortByNumberButton", "enabled", gui
+	option set "SortByUrgencyButton", "enabled", gui
+	option set "SortByDescriptionButton", "enabled", gui
+	option set "EditButton", "enabled", gui
+	option set "DeleteButton", "enabled", gui
+	option set "NewButton", "enabled", gui
+end sub
+
