@@ -18,7 +18,7 @@ sub CheckSortMode(switchme)
 		if SortDirection$ = "az" key$ = "3"
 		if SortDirection$ = "za" key$ = "3 -r"
 	endif
-	DoThis$= "vstm-noansi > " + TempFile1$
+	DoThis$= "vstmnoansi > " + TempFile1$
 	system(DoThis$)
 	DoThis$= "sort --key=" + key$ + " " + TempFile1$ + " > " + TempFile2$
 	system(DoThis$)

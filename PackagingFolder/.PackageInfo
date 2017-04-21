@@ -1,5 +1,5 @@
 name				vstm
-version				1.0-7
+version				1.0-8
 architecture			x86_gcc2
 
 summary			"Simple TODO list manager"
@@ -13,15 +13,15 @@ vendor				"clasqm"
 copyrights			"Frank Villaro-Dixon <vstm@vi-di.fr>, Michel Clasquin-Johnson <clasqm@gmail.com>"
 licenses				"vstm"
 provides {
-					vstm = 1.0-7
+					vstm = 1.0-8
 					app:vstm_GUI
 					cmd:vstmnoansi
 					cmd:vstm
 }
 requires {
-					haiku>=r1~alpha4_pm_hrev49977-1
-					yab>=1.7.5.2
+					yab>=1.7.5.3
 }
 urls {
 				http://clasquin-johnson.co.za/michel/haiku
 }
+

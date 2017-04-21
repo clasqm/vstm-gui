@@ -11,7 +11,7 @@
 ##The variables will be used in the About Box and in naming the program.
  
 ProgramName$ = "vstm, the Very Simple Task Manager"
-AuthorName$ = "vstm by Frank Villaro-Dixon <vstm@vi-di.fr>, and vstm-GUI by Michel Clasquin-Johnson <clasqm@gmail.com>"
+AuthorName$ = "vstm by Frank Villaro-Dixon <vstm@vi-di.fr>, and vstm_GUI by Michel Clasquin-Johnson <clasqm@gmail.com>"
 ProgramVersion$ = "v0.1"
 ProgramBriefDescription$ = "A simple TODO List. create TODOS, do them, delete them, that's all. No \"pending\", no snooze button. Just list the things you need to do, then get them done."
 ProgramLicense$ = "vstm is Beerware"
@@ -35,7 +35,6 @@ TempFile2$ = TempDir$ + "/" + "vstm2"
 SortMode$ = "number"
 SortDirection$ = "az"
  
- 
 ##########################
 ######Preliminary Commands#####
 ##########################
@@ -43,11 +42,9 @@ SortDirection$ = "az"
 ## Commands to run before the Main Loop come here.
 ## e.g. setting up a window with a menu.
  
- system("touch /boot/home/.vstmDB")
+ system("touch " + DataFile$)
  
 OpenWindow()
-
- 
  
  
 #######End of Prologue#######
@@ -162,7 +159,7 @@ sub CheckSortMode(switchme)
 		if SortDirection$ = "az" key$ = "3"
 		if SortDirection$ = "za" key$ = "3 -r"
 	endif
-	DoThis$= "vstm-noansi > " + TempFile1$
+	DoThis$= "vstmnoansi > " + TempFile1$
 	system(DoThis$)
 	DoThis$= "sort --key=" + key$ + " " + TempFile1$ + " > " + TempFile2$
 	system(DoThis$)
@@ -342,5 +339,4 @@ end sub
 ########################################
 ###DATA statements, if any, come here###
 ########################################
-
 
